@@ -1,4 +1,3 @@
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 const path = require('path')
 const fs = require("fs")
@@ -26,8 +25,7 @@ module.exports = {
 			banner: "// ==UserScript==\n\
 					// @name         Majya\n\
 					// @namespace    https://github.com/xlnx/\n\
-					// @version      0.2.1\n\
-					// @description  dye recommended discarding tile with tenhou/2\n\
+					// @version      0.1.0\n\
 					// @author       KoishiChan\n\
 					// @match        https://majsoul.union-game.com/0/\n\
 					// @grant        none\n\
