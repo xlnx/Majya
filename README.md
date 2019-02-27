@@ -27,3 +27,7 @@ npm run build   # target script in ./build
 - [ ] 断线重连重新获得之前状态
 - [ ] 防守有明显听牌迹象的副露家
 - [ ] 修复视觉效果
+
+# References 
+
+* 魔女Blog
