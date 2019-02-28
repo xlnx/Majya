@@ -40,6 +40,7 @@ interface ActionDiscardTile {
 }
 
 interface ActionDealTile {
+	doras?: TileLiteral[],		// 杠完 doras为所有dora指示牌
 	left_tile_count: number,
 	seat: number,
 	zhenting: boolean,

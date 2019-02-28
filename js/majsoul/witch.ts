@@ -27,6 +27,7 @@ const N37 = new Set<number>(["3m", "3s", "3p", "7m", "7s", "7p"].map(lit2tile))
 const N46 = new Set<number>(["4m", "4s", "4p", "6m", "6s", "6p"].map(lit2tile))
 const N5 = new Set<number>(["5m", "5s", "5p"].map(lit2tile))
 const N456 = new Set<number>(["3m", "4m", "5m", "3p", "4p", "5p", "3s", "4s", "5s"].map(lit2tile))
+const ZS = new Set<number>(MPSZ.Z)
 
 function floorTile(tile: Tile) {
 	const lit = tile2lit(tile)
@@ -36,6 +37,6 @@ function floorTile(tile: Tile) {
 export {
 	MPSZ,
 	N19, N28, N37, N46, N5,
-	N456, N1234, N6789,
+	N456, N1234, N6789, ZS,
 	floorTile
 }

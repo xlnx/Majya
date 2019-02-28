@@ -15,19 +15,19 @@ class Majya {
 
 	inject() {
 		if (typeof view !== "undefined" && view.DesktopMgr.Inst) {
-			console.log("Majya injected.");
+			console.log("Majya injected.")
 			for (const key in view.DesktopMgr.Inst.actionMap) {
-				const action = view.DesktopMgr.Inst.actionMap[key];
-				const m = action.method;
+				const action = view.DesktopMgr.Inst.actionMap[key]
+				const m = action.method
 				action.method = (e: any) => {
-					setTimeout(() => this.dispatch(e.msg), 500);
-					return m(e);
-				};
+					setTimeout(() => this.dispatch(e.msg), 500)
+					return m(e)
+				}
 			}
 		} else setTimeout(() => {
 			// console.log("Majya waiting...");
-			this.inject();
-		}, 1000);
+			this.inject()
+		}, 1000)
 	}
 
 	dispatch(action: any) {
@@ -39,31 +39,26 @@ class Majya {
 		if (sig) {
 			// console.log(sig)
 			let signal = <Signal>sig
-			if (signal.light) {
-				for (let idx in signal.light) {
-					const color = [
-						new Laya.Vector4(1, 0.7, 0.7, 1),
-						new Laya.Vector4(0.6, 1, 0.6, 1),
-						new Laya.Vector4(0.75, 1, 0.75, 1),
-						new Laya.Vector4(0.88, 1, 0.88, 1),
-						new Laya.Vector4(0.95, 1, 0.95, 1),
-					][idx]
-					for (let tile of signal.light[idx]) {
-						this.getFromHand(tile).forEach(tile => {
-							tile._SetColor(color);
-							setTimeout(() => tile._SetColor(color), 750);
-						})
-					}
+			if (signal.safetyRating) {
+				for (let e of signal.safetyRating) {
+					const color = e.rate == Infinity ?
+						new Laya.Vector4(1, 0.7, 0.7, 1)
+						: new Laya.Vector4(0.6 * e.rate + 1 * (1 - e.rate),
+							1, 0.6 * e.rate + 1 * (1 - e.rate), 1)
+					this.getFromHand(tile2lit(e.tile)).forEach(tile => {
+						tile._SetColor(color)
+						setTimeout(() => tile._SetColor(color), 750)
+					})
 				}
 			}
 		}
 	}
 
 	handToString() {
-		const handIn = view.DesktopMgr.Inst.mainrole.hand;
-		let strOut = "";
+		const handIn = view.DesktopMgr.Inst.mainrole.hand
+		let strOut = ""
 		for (const tileInGameIn of handIn) {
-			strOut += tileInGameIn.val.toString();
+			strOut += tileInGameIn.val.toString()
 		}
 		// console.log(strOut)
 		// return tenhou.MPSZ.contract(strOut);
