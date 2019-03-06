@@ -42,9 +42,8 @@ class Majya {
 			if (signal.safetyRating) {
 				for (let e of signal.safetyRating) {
 					const color = e.rate == Infinity ?
-						new Laya.Vector4(1, 0.7, 0.7, 1)
-						: new Laya.Vector4(0.6 * e.rate + 1 * (1 - e.rate),
-							1, 0.6 * e.rate + 1 * (1 - e.rate), 1)
+						new Laya.Vector4(0.54, 0.72, 0.84, 1)
+						: new Laya.Vector4(1, 1, 0.6 * e.rate + 1 * (1 - e.rate), 1)
 					this.getFromHand(tile2lit(e.tile)).forEach(tile => {
 						tile._SetColor(color)
 						setTimeout(() => tile._SetColor(color), 750)

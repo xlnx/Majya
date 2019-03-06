@@ -25,7 +25,7 @@ module.exports = {
 			banner: "// ==UserScript==\n\
 					// @name         Majya\n\
 					// @namespace    https://github.com/xlnx/\n\
-					// @version      0.1.0\n\
+					// @version      0.1.1\n\
 					// @author       KoishiChan\n\
 					// @match        https://majsoul.union-game.com/0/\n\
 					// @grant        none\n\
