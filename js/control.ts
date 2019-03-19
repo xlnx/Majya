@@ -155,7 +155,9 @@ class Control {
 					// 筋37 => 单骑对碰 | 卡隆 | 12顺
 					let ftd37 = new Set<number>()	//40
 
-					selfDiscard.forEach((tile: Tile) => {
+					let refused = new Set<number>([...selfDiscard, ...this.refusedTiles[seat]])
+
+					refused.forEach((tile: Tile) => {
 						if (!ZS.has(tile)) {
 							if (N5.has(tile)) {
 								// 2 <- 5 -> 8
@@ -179,7 +181,7 @@ class Control {
 								if (this.wall.has(walls[0])) {
 									// 半筋+壁 (5) <- 6 -> 9   只可单骑对碰
 									ftd19.add((tile + other) / 2 | 0)
-								} else if (selfDiscard.has(other) || this.wall.has(walls[1])) {
+								} else if (refused.has(other) || this.wall.has(walls[1])) {
 									// 两筋牌 456 | 半筋+壁 (4) <- 6 -> 9   可单骑对碰|卡隆
 									ftd28456.add((tile + other) / 2 | 0)
 								}
@@ -234,7 +236,7 @@ class Control {
 					let curr = new Array(3 * 9 + 7).fill(0)
 
 					// 现物
-					Array.from(selfDiscard).concat(Array.from(this.refusedTiles[seat]), z0s)
+					Array.from(refused).concat(z0s)
 						.forEach(tile => curr[tile] = Math.max(curr[tile], Infinity))
 
 					// 考虑不同听牌型
