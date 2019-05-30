@@ -14,6 +14,17 @@ class Majya {
 	}
 
 	inject() {
+		if (typeof uiscript === "undefined" ||
+			!uiscript.UI_DesktopInfo ||
+			typeof Laya.View.uiMap === "undefined" ||
+			!Laya.View.uiMap["mj/desktopInfo"] ||
+			typeof view === "undefined" ||
+			!view.DesktopMgr ||
+			!view.DesktopMgr.prototype
+		) {
+			return setTimeout(() => this.inject(), 1000)
+		}
+
 		if (typeof view !== "undefined" && view.DesktopMgr.Inst) {
 			console.log("Majya injected.")
 			for (const key in view.DesktopMgr.Inst.actionMap) {
